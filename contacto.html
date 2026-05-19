@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario de contacto — TechShop ADSO.">
+  <title>TechShop ADSO — Contacto</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-logo" aria-label="TechShop ADSO — Inicio">
+        Tech<span>Shop</span> ADSO
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <details>
+          <summary aria-label="Abrir menú de navegación">Menú</summary>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="detalle.html">Detalle producto</a></li>
+            <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+          </ul>
+        </details>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="site-main">
+    <div class="container">
+
+      <h1>Contáctanos</h1>
+      <p>¿Tienes preguntas sobre un producto, una compra o quieres una cotización para tu sede? Escríbenos y te respondemos en menos de 24 horas.</p>
+
+      <form class="form-contacto" action="#" method="post" novalidate aria-labelledby="form-titulo">
+
+        <h2 id="form-titulo" class="sr-only" style="position: absolute; left: -9999px;">Formulario de contacto</h2>
+
+        <fieldset>
+          <legend>Datos de contacto</legend>
+
+          <div class="form-field">
+            <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              aria-required="true"
+              autocomplete="name"
+              placeholder="Ej: María Pérez"
+            >
+            <span class="hint">Como aparece en tu documento de identidad.</span>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              aria-required="true"
+              autocomplete="email"
+              placeholder="tucorreo@ejemplo.com"
+            >
+          </div>
+
+          <div class="form-field">
+            <label for="telefono">Teléfono <span class="hint">(opcional)</span></label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              autocomplete="tel"
+              placeholder="300 123 4567"
+              pattern="[0-9 ]{7,15}"
+            >
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tu mensaje</legend>
+
+          <div class="form-field">
+            <label for="asunto">Asunto <span aria-hidden="true">*</span></label>
+            <select id="asunto" name="asunto" required aria-required="true">
+              <option value="">-- Selecciona --</option>
+              <option value="cotizacion">Cotización</option>
+              <option value="garantia">Garantía / soporte</option>
+              <option value="general">Pregunta general</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="mensaje">Mensaje <span aria-hidden="true">*</span></label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              required
+              aria-required="true"
+              rows="5"
+              placeholder="Cuéntanos en qué podemos ayudarte..."
+            ></textarea>
+          </div>
+
+          <div class="form-field">
+            <label>
+              <input type="checkbox" name="acepto" required aria-required="true">
+              Acepto la política de tratamiento de datos.
+            </label>
+          </div>
+        </fieldset>
+
+        <p>
+          <button type="submit">Enviar mensaje</button>
+          <button type="reset">Limpiar</button>
+        </p>
+
+      </form>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>&copy; 2026 TechShop ADSO — Proyecto académico ficha 3235898 / 3235899.</p>
+      <nav aria-label="Enlaces del pie">
+        <ul>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="https://github.com/" rel="noopener">GitHub del repo</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

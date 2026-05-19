@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Build / preview
+dist/
+build/
+.cache/
+
+# Variables de entorno
+.env
+.env.local
