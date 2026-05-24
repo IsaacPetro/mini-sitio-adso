@@ -1,132 +1,190 @@
-# Checklist de usabilidad y accesibilidad
+# Checklist de usabilidad y accesibilidad — SIGPRECO
 
-> Reglas que aplicamos en este mini-sitio y cómo se entregan como evidencia.
+> Reglas de accesibilidad y usabilidad aplicadas al sistema SIGPRECO.
+> Basado en estándares WCAG 2.1 nivel AA y diseño responsive institucional.
 
 Conexión con evidencias:
-- **GA5-EV02** — reglas de usabilidad y accesibilidad (escritorio)
-- **GA5-EV06** — reglas de usabilidad y accesibilidad (móvil)
 
-Estándar de referencia: [WCAG 2.1 nivel AA](https://www.w3.org/WAI/WCAG21/quickref/).
+- **GA5-EV02** — reglas de accesibilidad y usabilidad web
+- **GA5-EV06** — accesibilidad y usabilidad móvil
+
+Estándar de referencia:
+https://www.w3.org/WAI/WCAG21/quickref/
 
 ---
 
-## 1. Estructura semántica (WCAG 1.3.1)
+# 1. Estructura semántica (WCAG 1.3.1)
 
-| Regla | ✅ Cómo lo aplicamos |
-|---|---|
-| Una sola `<h1>` por página | Cada página empieza con un `<h1>` único |
-| Jerarquía sin saltos (`h1` → `h2` → `h3`) | No saltamos de `<h1>` a `<h3>` |
-| Landmarks ARIA implícitos | Usamos `<header>`, `<nav>`, `<main>`, `<aside>`, `<footer>` |
-| `<main>` con id `contenido` | Permite que el "skip link" salte ahí |
-| Listas reales para listas | `<ol>` para pasos numerados, `<ul>` para items sin orden |
-| Productos como `<article>` | Cada card es un artículo independiente |
+| Regla                      | ✅ Cómo se aplicó                                                         |
+| -------------------------- | ------------------------------------------------------------------------- |
+| Una sola `<h1>` por página | Cada pantalla tiene un encabezado principal único                         |
+| Jerarquía correcta         | Uso progresivo de `<h1>`, `<h2>` y `<h3>`                                 |
+| HTML semántico             | Uso de `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>` |
+| Sidebar semántico          | El menú lateral usa `<aside>` + `<nav>`                                   |
+| Formularios accesibles     | Uso de `<fieldset>` y `<legend>`                                          |
+| Cards administrativas      | Cada módulo usa `<article>` independiente                                 |
 
-## 2. Navegación por teclado (WCAG 2.1.1, 2.4.7)
+---
 
-- ✅ **Skip link**: `<a href="#contenido" class="skip-link">` aparece al hacer Tab.
-- ✅ **`:focus-visible`** con un anillo de 3 px azul — siempre se ve dónde está el foco.
-- ✅ **Orden lógico**: el orden del DOM coincide con el orden visual.
-- ✅ **`<details>` para el menú**: nativamente accesible con teclado (Enter, Space).
-- ✅ **Sin "trampas de foco"**: no hay modales sin escape.
+# 2. Navegación por teclado (WCAG 2.1.1, 2.4.7)
 
-**Cómo probarlo:** abre el sitio, presiona `Tab` repetidamente. Cada elemento interactivo debe recibir un anillo visible.
+- ✅ Existe un **skip link** para saltar al contenido principal.
+- ✅ Todos los elementos interactivos muestran foco visible.
+- ✅ El orden del teclado coincide con el orden visual.
+- ✅ El sidebar puede navegarse completamente con teclado.
+- ✅ Los formularios permiten navegación mediante `Tab`.
 
-## 3. Contraste de color (WCAG 1.4.3)
+## Cómo probarlo
 
-| Elemento | Foreground | Background | Ratio | Cumple AA |
-|---|---|---|---|---|
-| Texto base | `#1a1a1a` | `#ffffff` | 16.1:1 | ✅ |
-| Texto muted | `#595959` | `#ffffff` | 7.0:1 | ✅ |
-| Enlace primario | `#0052cc` | `#ffffff` | 7.3:1 | ✅ |
-| Botón primario | `#ffffff` | `#0052cc` | 7.3:1 | ✅ |
-| Botón accent (hero) | `#ffffff` | `#d63a1f` | 4.7:1 | ✅ |
+Presionar:
 
-**Verificar:** [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/).
-
-## 4. Imágenes (WCAG 1.1.1)
-
-- ✅ **Todas las `<img>` tienen `alt`** descriptivo (no "imagen", no nombre del archivo).
-- ✅ Para imágenes decorativas usamos `alt=""` (no aplica en este sitio porque todas comunican).
-- ✅ `<img>` con `aspect-ratio` reservado vía CSS — no hay "salto" cuando carga la imagen.
-
-Ejemplo de `alt` bueno y malo:
-
-```html
-<!-- ❌ Mal: no describe -->
-<img src="auriculares.jpg" alt="imagen">
-
-<!-- ✅ Bien: describe lo relevante -->
-<img src="auriculares.jpg" alt="Audífonos inalámbricos Pro vista frontal, color negro mate">
+```text
+Tab
 ```
 
-## 5. Formularios (WCAG 1.3.5, 3.3.1, 3.3.2)
+Todos los botones, inputs y enlaces deben recibir foco visible.
 
-- ✅ **Todo `<input>` tiene `<label>`** asociado con `for`/`id` — clic en el label enfoca el campo.
-- ✅ **`autocomplete`** correcto en cada campo (`name`, `email`, `tel`).
-- ✅ **`aria-required="true"`** + asterisco visual en campos obligatorios.
-- ✅ **Mensajes de error**: usamos `:invalid:not(:placeholder-shown)` para no mostrar error antes de tiempo.
-- ✅ **`<fieldset>` + `<legend>`** para agrupar campos relacionados.
-- ✅ **`type="email"`, `type="tel"`**: en móvil sale el teclado correcto.
+---
 
-## 6. Tamaños táctiles (WCAG 2.5.5 — AAA, pero lo aplicamos)
+# 3. Contraste de color (WCAG 1.4.3)
 
-Todos los botones y inputs tienen `min-height: 44px` para que sean fáciles de tocar en pantalla táctil.
+| Elemento           | Foreground | Background | Cumple |
+| ------------------ | ---------- | ---------- | ------ |
+| Texto principal    | `#1F2937`  | `#FFFFFF`  | ✅     |
+| Sidebar            | `#FFFFFF`  | `#1E3A8A`  | ✅     |
+| Botones            | `#FFFFFF`  | `#1E3A8A`  | ✅     |
+| Texto secundario   | `#6B7280`  | `#FFFFFF`  | ✅     |
+| Hero institucional | `#FFFFFF`  | `#162C6B`  | ✅     |
 
-## 7. Idioma (WCAG 3.1.1)
+Herramienta usada:
+
+- WebAIM Contrast Checker
+
+---
+
+# 4. Imágenes e iconografía (WCAG 1.1.1)
+
+- ✅ Todas las imágenes tienen atributo `alt`.
+- ✅ Los elementos decorativos no afectan lectores de pantalla.
+- ✅ Las imágenes son responsive (`max-width: 100%`).
+- ✅ El sistema evita desplazamientos visuales inesperados.
+
+Ejemplo:
 
 ```html
-<html lang="es">
+<img src="dashboard.png" alt="Panel administrativo SIGPRECO" />
 ```
 
-Esencial para lectores de pantalla — eligen la voz y la pronunciación correctas.
+---
 
-## 8. Responsive — sin scroll horizontal (WCAG 1.4.10)
+# 5. Formularios (WCAG 1.3.5, 3.3.1, 3.3.2)
 
-- ✅ `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
-- ✅ `img { max-width: 100%; height: auto; }`
-- ✅ Grid colapsa de 3 → 2 → 1 columnas según ancho.
-- ✅ Tipografía con `max-width: 65ch` para que ninguna línea sea muy larga.
-
-## 9. Preferencias del usuario (WCAG 2.3.3)
-
-- ✅ **`prefers-reduced-motion`**: si el usuario desactivó animaciones del sistema, no le animamos nada.
-- ✅ **`prefers-color-scheme: dark`**: el sitio se adapta a modo oscuro automáticamente.
-
-## 10. Estructura del HTML válida
-
-- ✅ DOCTYPE HTML5 (`<!DOCTYPE html>`).
-- ✅ `<meta charset="UTF-8">`.
-- ✅ `<title>` único y descriptivo por página.
+- ✅ Todos los inputs tienen `<label>`.
+- ✅ Se utilizan tipos correctos (`email`, `text`, `password`).
+- ✅ Campos obligatorios marcados correctamente.
+- ✅ Formularios agrupados con `<fieldset>`.
+- ✅ Inputs adaptados para dispositivos móviles.
+- ✅ Validación básica implementada.
 
 ---
 
-## Reglas específicas para móvil (EV06)
+# 6. Tamaños táctiles (WCAG 2.5.5)
 
-Las anteriores aplican, más estas extra del **mobile-first**:
+Todos los botones e inputs utilizan:
 
-1. **Viewport meta tag** — sin él, el navegador móvil renderiza como si fuera desktop.
-2. **Tamaños táctiles 44 × 44 px mínimo** — Apple HIG / Google Material.
-3. **Menú colapsado** — el `<details>` nativo es accesible sin JavaScript.
-4. **Sin hover-only** — todo lo que se hace al pasar el mouse también debe funcionar al tocar.
-5. **Imágenes optimizadas** — `aspect-ratio` evita "saltos" cuando cargan.
-6. **Tipografía mínima de 16px** — debajo de eso, iOS hace zoom automático en inputs.
-7. **Una columna por defecto** — el grid arranca en `1fr` y crece con media queries.
+```css
+min-height: 44px;
+```
+
+Esto mejora la interacción táctil en móviles y tablets.
 
 ---
 
-## Cómo entregar como evidencia
+# 7. Idioma del sistema (WCAG 3.1.1)
 
-Esta tabla más los siguientes archivos del repo conforman la evidencia:
+```html
+<html lang="es"></html>
+```
 
-- `docs/accesibilidad.md` (este archivo) — el checklist.
-- `index.html`, `catalogo.html`, `detalle.html`, `contacto.html` — implementación.
-- `css/styles.css` — los media queries, las variables de contraste, los focus rings.
-- Capturas de pantalla móvil y escritorio (las generan los aprendices con DevTools).
+Permite que lectores de pantalla utilicen pronunciación correcta.
 
-### Herramientas recomendadas para auditar
+---
 
-1. **Lighthouse** (Chrome DevTools → Lighthouse → Accessibility) — meta: ≥ 95.
-2. **axe DevTools** (extensión de Chrome) — detecta problemas concretos.
-3. **WebAIM Contrast Checker** — para verificar combinaciones de color.
-4. **DevTools → Device Toolbar** — simula móviles (iPhone SE, Pixel 5).
-5. **VoiceOver** (Mac: ⌘ + F5) / **NVDA** (Windows, gratis) — probar con lector de pantalla.
+# 8. Responsive design (WCAG 1.4.10)
+
+- ✅ Diseño mobile-first.
+- ✅ Sidebar adaptable en pantallas pequeñas.
+- ✅ Cards administrativas responsive.
+- ✅ Formularios adaptables.
+- ✅ Layout sin scroll horizontal.
+- ✅ Uso de media queries.
+
+---
+
+# 9. Preferencias del usuario (WCAG 2.3.3)
+
+- ✅ Compatibilidad con `prefers-reduced-motion`.
+- ✅ Compatibilidad con `prefers-color-scheme: dark`.
+- ✅ Transiciones suaves y no invasivas.
+
+---
+
+# 10. Estructura HTML válida
+
+- ✅ `<!DOCTYPE html>`
+- ✅ `<meta charset="UTF-8">`
+- ✅ `<meta name="viewport">`
+- ✅ `<title>` descriptivo por página
+- ✅ Navegación semántica válida
+
+---
+
+# Reglas específicas para móvil (EV06)
+
+Además de las reglas anteriores:
+
+1. Sidebar adaptable para móviles.
+2. Navegación táctil optimizada.
+3. Inputs con tamaño adecuado.
+4. Layout de una columna en pantallas pequeñas.
+5. Cards reorganizadas automáticamente.
+6. Formularios responsive.
+7. Diseño sin necesidad de zoom manual.
+
+---
+
+# Componentes principales del sistema
+
+| Componente         | Estructura HTML         |
+| ------------------ | ----------------------- |
+| Sidebar            | `<aside>` + `<nav>`     |
+| Dashboard          | `<main>` + `<section>`  |
+| Cards módulos      | `<article>`             |
+| Formularios        | `<form>` + `<fieldset>` |
+| Panel soporte      | `<section>`             |
+| Actividad reciente | `<article>`             |
+
+---
+
+# Cómo entregar la evidencia
+
+Archivos utilizados:
+
+- `docs/accesibilidad.md`
+- `docs/wireframes.md`
+- `docs/mapa-navegacion.md`
+- `index.html`
+- `catalogo.html`
+- `detalle.html`
+- `contacto.html`
+- `css/styles.css`
+
+---
+
+# Herramientas recomendadas
+
+1. Lighthouse (Chrome DevTools)
+2. axe DevTools
+3. WebAIM Contrast Checker
+4. Device Toolbar (responsive)
+5. NVDA / VoiceOver

@@ -1,116 +1,153 @@
-# Mapa de navegación — TechShop ADSO
+# Mapa de navegación — SIGPRECO
 
-> Diagrama jerárquico de cómo se conectan las páginas del sitio.
-> Hecho en **Mermaid** — listo para entregar como EV05 (mapa web) y EV07 (mapa móvil).
+> Diagrama jerárquico de navegación del sistema SIGPRECO.
+> Sistema orientado a la gestión presupuestal y administrativa institucional.
+> Elaborado en **Mermaid** para las evidencias EV05 y EV07.
 
 Conexión con evidencias:
-- **GA5-EV05** — mapa de navegación (web)
-- **GA5-EV07** — interfaz gráfica + mapa de navegación móvil
+
+- **GA5-EV05** — mapa de navegación web
+- **GA5-EV07** — navegación responsive y móvil
 
 ---
 
-## Mapa principal del sitio
+# Mapa principal del sistema
 
 ```mermaid
 flowchart TD
-  HOME[("🏠 Inicio<br/>index.html")]
 
-  HOME --> CATALOGO["📋 Catálogo<br/>catalogo.html"]
-  HOME --> DESTACADO["⭐ Producto destacado<br/>(desde hero)<br/>detalle.html"]
-  HOME --> CONTACTO["✉️ Contacto<br/>contacto.html"]
+  LOGIN[("🔐 Login<br/>login.html")]
 
-  CATALOGO --> DETALLE["🛒 Detalle producto<br/>detalle.html"]
-  CATALOGO -.->|filtro categoría| CATALOGO
+  LOGIN --> DASHBOARD["📊 Dashboard<br/>index.html"]
 
-  DETALLE --> RELACIONADO["🔁 Producto relacionado<br/>detalle.html"]
-  DETALLE --> CONTACTO
+  DASHBOARD --> MODULOS["📁 Módulos<br/>catalogo.html"]
 
-  CONTACTO -->|envío exitoso| HOME
+  DASHBOARD --> SOPORTE["🛠️ Soporte<br/>contacto.html"]
 
-  classDef principal fill:#0052cc,stroke:#003d99,color:#fff,font-weight:bold
-  classDef secundaria fill:#f5f5f5,stroke:#d6d6d6,color:#1a1a1a
-  classDef accion fill:#d63a1f,stroke:#b8311a,color:#fff
+  MODULOS --> CDP["📄 Gestión CDP<br/>detalle.html"]
 
-  class HOME principal
-  class CATALOGO,DETALLE,CONTACTO secundaria
-  class DESTACADO,RELACIONADO,CONTACTO accion
+  MODULOS --> CONTRATOS["📑 Contratos"]
+
+  MODULOS --> REPORTES["📈 Reportes"]
+
+  MODULOS --> USUARIOS["👥 Usuarios"]
+
+  MODULOS --> CONFIG["⚙️ Configuración"]
+
+  CDP --> HISTORIAL["🕘 Historial presupuestal"]
+
+  SOPORTE --> DASHBOARD
+
+  classDef principal fill:#1E3A8A,stroke:#162C6B,color:#fff,font-weight:bold
+  classDef secundaria fill:#E5E7EB,stroke:#D1D5DB,color:#1F2937
+  classDef accion fill:#162C6B,stroke:#0F172A,color:#fff
+
+  class LOGIN,DASHBOARD principal
+  class MODULOS,CDP,SOPORTE secundaria
+  class CONTRATOS,REPORTES,USUARIOS,CONFIG,HISTORIAL accion
 ```
 
 ---
 
-## Niveles jerárquicos
+# Niveles jerárquicos
 
 ```mermaid
 flowchart TB
-  N0["NIVEL 0 — Página de aterrizaje"]
-  N1["NIVEL 1 — Secciones principales"]
-  N2["NIVEL 2 — Páginas internas"]
 
-  N0 --- HOME[("🏠 Inicio")]
+  N0["NIVEL 0 — Acceso al sistema"]
 
-  N1 --- CAT["📋 Catálogo"]
-  N1 --- CON["✉️ Contacto"]
+  N1["NIVEL 1 — Panel principal"]
 
-  N2 --- DET["🛒 Detalle de producto"]
+  N2["NIVEL 2 — Módulos administrativos"]
 
-  HOME --> CAT
-  HOME --> CON
-  CAT --> DET
+  N3["NIVEL 3 — Funciones internas"]
+
+  N0 --- LOGIN["🔐 Login"]
+
+  N1 --- DASH["📊 Dashboard"]
+
+  N2 --- MOD["📁 Módulos"]
+  N2 --- SOP["🛠️ Soporte"]
+
+  N3 --- CDP["📄 Gestión CDP"]
+  N3 --- CON["📑 Contratos"]
+  N3 --- REP["📈 Reportes"]
+  N3 --- USR["👥 Usuarios"]
+  N3 --- CFG["⚙️ Configuración"]
+
+  LOGIN --> DASH
+  DASH --> MOD
+  DASH --> SOP
+
+  MOD --> CDP
+  MOD --> CON
+  MOD --> REP
+  MOD --> USR
+  MOD --> CFG
 
   style N0 fill:none,stroke:none,font-weight:bold
   style N1 fill:none,stroke:none,font-weight:bold
   style N2 fill:none,stroke:none,font-weight:bold
+  style N3 fill:none,stroke:none,font-weight:bold
 ```
 
 ---
 
-## Mapa de navegación — versión móvil
+# Mapa de navegación — versión móvil
 
-En móvil la navegación principal **colapsa en un menú `<details>`** que se despliega al tocar "Menú". Las relaciones entre páginas son las mismas, solo cambia el acceso visual al menú.
+En dispositivos móviles el sistema adapta el sidebar lateral a una navegación vertical optimizada para pantallas pequeñas, manteniendo accesibilidad y navegación responsive.
 
 ```mermaid
 flowchart TD
-  MOBILE["📱 Header móvil<br/>Logo + botón ☰ Menú"]
 
-  MOBILE -->|tap en ☰| MENU{{"📋 Menú desplegado<br/>(details abierto)"}}
+  MOBILE["📱 Vista móvil<br/>SIGPRECO"]
 
-  MENU --> HOME_M["🏠 Inicio"]
-  MENU --> CAT_M["📋 Catálogo"]
-  MENU --> DET_M["🛒 Detalle"]
-  MENU --> CON_M["✉️ Contacto"]
+  MOBILE --> MENU{{"☰ Sidebar móvil"}}
 
-  HOME_M -.->|scroll| HERO_M["Hero · CTA Ver catálogo"]
-  HERO_M --> CAT_M
+  MENU --> DASH_M["📊 Dashboard"]
 
-  CAT_M --> CARD_M["Card de producto"]
-  CARD_M --> DET_M
+  MENU --> MOD_M["📁 Módulos"]
 
-  DET_M --> CTA_M["CTA Solicitar info"]
-  CTA_M --> CON_M
+  MENU --> CDP_M["📄 Gestión CDP"]
 
-  classDef mobile fill:#0052cc,stroke:#003d99,color:#fff
+  MENU --> SOP_M["🛠️ Soporte"]
+
+  MENU --> REP_M["📈 Reportes"]
+
+  MENU --> USR_M["👥 Usuarios"]
+
+  DASH_M --> MOD_M
+
+  MOD_M --> CDP_M
+
+  CDP_M --> SOP_M
+
+  classDef mobile fill:#1E3A8A,stroke:#162C6B,color:#fff
+
   class MOBILE,MENU mobile
 ```
 
-### Diferencias clave móvil vs escritorio
+---
 
-| Elemento | Móvil | Escritorio |
-|---|---|---|
-| Nav | `<details>` desplegable | Horizontal siempre visible |
-| Grid de productos | 1 columna | 3 columnas |
-| Detalle | 1 columna (imagen arriba, info abajo) | 2 columnas (imagen ⟷ info) |
-| Footer | Apilado vertical | Logo izquierda + enlaces derecha |
-| CTA primario | Ancho completo | Ancho según contenido |
+# Diferencias clave móvil vs escritorio
+
+| Elemento        | Móvil                      | Escritorio                    |
+| --------------- | -------------------------- | ----------------------------- |
+| Navegación      | Sidebar vertical adaptable | Sidebar lateral fijo          |
+| Dashboard       | Cards en 1 columna         | Cards en múltiples columnas   |
+| Formularios     | Diseño apilado             | Distribución más amplia       |
+| Layout          | Flujo vertical             | Layout dividido               |
+| Acceso módulos  | Scroll vertical            | Navegación lateral permanente |
+| Panel principal | Compacto                   | Expandido                     |
 
 ---
 
-## Convenciones del mapa
+# Convenciones del mapa
 
-- **Nodo redondeado** `(("..."))` → página de aterrizaje (home)
-- **Nodo rectangular** `["..."]` → página interna
-- **Nodo hexagonal** `{{"..."}}` → menú o componente desplegable
-- **Flecha sólida** `-->` → enlace de navegación normal
-- **Flecha punteada** `-.->` → navegación condicional o filtro
-- **Color azul** → página principal (home)
-- **Color gris** → páginas secundarias
-- **Color naranja** → acciones / CTA
+- **Nodo redondeado** `(("..."))` → acceso principal del sistema
+- **Nodo rectangular** `["..."]` → módulos y páginas internas
+- **Nodo hexagonal** `{{"..."}}` → componente desplegable o navegación móvil
+- **Flecha sólida** `-->` → navegación principal
+- **Color azul oscuro** → páginas principales del sistema
+- **Color gris** → módulos secundarios
+- **Color azul intenso** → acciones y funcionalidades internas

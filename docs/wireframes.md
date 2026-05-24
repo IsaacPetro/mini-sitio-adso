@@ -4,6 +4,7 @@
 > Hechos en **Mermaid** para que cualquiera pueda editarlos sin software extra.
 
 Conexión con evidencias:
+
 - **GA5-EV03** (interfaz gráfica + mapa de navegación — web)
 - **GA5-EV07** (interfaz gráfica + mapa de navegación — móvil)
 
@@ -161,22 +162,23 @@ Mismo flujo pero el formulario tiene `max-width: 500px` y queda centrado en la c
 
 ## Convenciones del wireframe
 
-| Símbolo | Significado |
-|---|---|
-| 🏷️ | Cabecera con logo + nav |
-| 🎯 | Sección hero (llamado de atención) |
-| ⭐ | Destacados |
-| 🃏 | Card individual de producto |
-| 🔧 | Filtros / aside |
-| 🍞 | Breadcrumb / migas de pan |
-| 📦 | Fieldset de formulario |
-| 🟦 | Botón primario |
-| ⬜ | Botón secundario |
-| 📄 | Footer |
+| Símbolo | Significado                        |
+| ------- | ---------------------------------- |
+| 🏷️      | Cabecera con logo + nav            |
+| 🎯      | Sección hero (llamado de atención) |
+| ⭐      | Destacados                         |
+| 🃏      | Card individual de producto        |
+| 🔧      | Filtros / aside                    |
+| 🍞      | Breadcrumb / migas de pan          |
+| 📦      | Fieldset de formulario             |
+| 🟦      | Botón primario                     |
+| ⬜      | Botón secundario                   |
+| 📄      | Footer                             |
 
 ## Notas para EV04 (maquetación HTML)
 
 Cada bloque del wireframe corresponde a un elemento semántico:
+
 - 🏷️ → `<header>` con `<nav>`
 - 🎯 / ⭐ / ✅ → `<section>` con `<h2>` propio
 - 🃏 → `<article>` dentro de un `<li>` del `<ul class="product-grid">`

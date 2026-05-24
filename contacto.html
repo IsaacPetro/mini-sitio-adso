@@ -1,144 +1,323 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Formulario de contacto — TechShop ADSO.">
-  <title>TechShop ADSO — Contacto</title>
+
+  <meta name="description"
+    content="SIGPRECO — Soporte y contacto institucional.">
+
+  <title>SIGPRECO — Soporte</title>
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+  <!-- Accesibilidad -->
+  <a href="#contenido" class="skip-link">
+    Saltar al contenido principal
+  </a>
 
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a href="index.html" class="site-logo" aria-label="TechShop ADSO — Inicio">
-        Tech<span>Shop</span> ADSO
-      </a>
+  <!-- Layout dashboard -->
+  <div class="dashboard-layout">
 
-      <nav class="site-nav" aria-label="Navegación principal">
-        <details>
-          <summary aria-label="Abrir menú de navegación">Menú</summary>
-          <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="catalogo.html">Catálogo</a></li>
-            <li><a href="detalle.html">Detalle producto</a></li>
-            <li><a href="contacto.html" aria-current="page">Contacto</a></li>
-          </ul>
-        </details>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <!-- Logo -->
+      <div class="sidebar__logo">
+
+        <a href="index.html" class="site-logo" aria-label="SIGPRECO inicio">
+          SIG<span>PRECO</span>
+        </a>
+
+      </div>
+
+      <!-- Navegación -->
+      <nav class="sidebar__nav" aria-label="Menú principal">
+
+        <ul>
+
+          <li>
+            <a href="index.html">
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a href="catalogo.html">
+              Módulos
+            </a>
+          </li>
+
+          <li>
+            <a href="detalle.html">
+              Gestión CDP
+            </a>
+          </li>
+
+          <li>
+            <a href="contacto.html" aria-current="page">
+              Soporte
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              Reportes
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              Usuarios
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              Configuración
+            </a>
+          </li>
+
+        </ul>
+
       </nav>
-    </div>
-  </header>
 
-  <main id="contenido" class="site-main">
-    <div class="container">
+    </aside>
 
-      <h1>Contáctanos</h1>
-      <p>¿Tienes preguntas sobre un producto, una compra o quieres una cotización para tu sede? Escríbenos y te respondemos en menos de 24 horas.</p>
+    <!-- Main -->
+    <main id="contenido" class="dashboard-main">
 
-      <form class="form-contacto" action="#" method="post" novalidate aria-labelledby="form-titulo">
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
 
-        <h2 id="form-titulo" class="sr-only" style="position: absolute; left: -9999px;">Formulario de contacto</h2>
+        <div>
 
-        <fieldset>
-          <legend>Datos de contacto</legend>
+          <h1>
+            Soporte institucional
+          </h1>
 
-          <div class="form-field">
-            <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              required
-              aria-required="true"
-              autocomplete="name"
-              placeholder="Ej: María Pérez"
-            >
-            <span class="hint">Como aparece en tu documento de identidad.</span>
-          </div>
+          <p>
+            Atención y soporte técnico del sistema SIGPRECO
+          </p>
 
-          <div class="form-field">
-            <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              aria-required="true"
-              autocomplete="email"
-              placeholder="tucorreo@ejemplo.com"
-            >
-          </div>
+        </div>
 
-          <div class="form-field">
-            <label for="telefono">Teléfono <span class="hint">(opcional)</span></label>
-            <input
-              type="tel"
-              id="telefono"
-              name="telefono"
-              autocomplete="tel"
-              placeholder="300 123 4567"
-              pattern="[0-9 ]{7,15}"
-            >
-          </div>
-        </fieldset>
+      </header>
 
-        <fieldset>
-          <legend>Tu mensaje</legend>
+      <!-- Hero -->
+      <section class="dashboard-hero" aria-labelledby="hero-soporte">
 
-          <div class="form-field">
-            <label for="asunto">Asunto <span aria-hidden="true">*</span></label>
-            <select id="asunto" name="asunto" required aria-required="true">
-              <option value="">-- Selecciona --</option>
-              <option value="cotizacion">Cotización</option>
-              <option value="garantia">Garantía / soporte</option>
-              <option value="general">Pregunta general</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label for="mensaje">Mensaje <span aria-hidden="true">*</span></label>
-            <textarea
-              id="mensaje"
-              name="mensaje"
-              required
-              aria-required="true"
-              rows="5"
-              placeholder="Cuéntanos en qué podemos ayudarte..."
-            ></textarea>
-          </div>
-
-          <div class="form-field">
-            <label>
-              <input type="checkbox" name="acepto" required aria-required="true">
-              Acepto la política de tratamiento de datos.
-            </label>
-          </div>
-        </fieldset>
+        <h2 id="hero-soporte">
+          Centro de soporte SIGPRECO
+        </h2>
 
         <p>
-          <button type="submit">Enviar mensaje</button>
-          <button type="reset">Limpiar</button>
+          Envíe solicitudes, reportes o inquietudes relacionadas
+          con el sistema de gestión presupuestal institucional.
         </p>
 
-      </form>
+      </section>
 
-    </div>
-  </main>
+      <!-- Formulario -->
+      <section aria-labelledby="formulario-soporte">
 
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <p>&copy; 2026 TechShop ADSO — Proyecto académico ficha 3235898 / 3235899.</p>
-      <nav aria-label="Enlaces del pie">
-        <ul>
-          <li><a href="catalogo.html">Catálogo</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="https://github.com/" rel="noopener">GitHub del repo</a></li>
-        </ul>
-      </nav>
-    </div>
-  </footer>
+        <div class="section-header">
+
+          <h2 id="formulario-soporte">
+            Formulario de soporte
+          </h2>
+
+        </div>
+
+        <form class="form-contacto" action="#" method="post" novalidate>
+
+          <!-- Datos -->
+          <fieldset>
+
+            <legend>
+              Información del usuario
+            </legend>
+
+            <div class="form-field">
+
+              <label for="nombre">
+                Nombre completo
+              </label>
+
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                placeholder="Ingrese su nombre completo">
+
+            </div>
+
+            <div class="form-field">
+
+              <label for="correo">
+                Correo institucional
+              </label>
+
+              <input
+                type="email"
+                id="correo"
+                name="correo"
+                required
+                placeholder="usuario@entidad.gov.co">
+
+            </div>
+
+            <div class="form-field">
+
+              <label for="dependencia">
+                Dependencia
+              </label>
+
+              <input
+                type="text"
+                id="dependencia"
+                name="dependencia"
+                placeholder="Dependencia institucional">
+
+            </div>
+
+          </fieldset>
+
+          <!-- Solicitud -->
+          <fieldset>
+
+            <legend>
+              Solicitud
+            </legend>
+
+            <div class="form-field">
+
+              <label for="tipo">
+                Tipo de solicitud
+              </label>
+
+              <select id="tipo" name="tipo">
+
+                <option value="">
+                  Seleccione una opción
+                </option>
+
+                <option value="soporte">
+                  Soporte técnico
+                </option>
+
+                <option value="reporte">
+                  Reporte de error
+                </option>
+
+                <option value="acceso">
+                  Solicitud de acceso
+                </option>
+
+                <option value="general">
+                  Información general
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="form-field">
+
+              <label for="mensaje">
+                Descripción
+              </label>
+
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="6"
+                required
+                placeholder="Describa la solicitud o inconveniente"></textarea>
+
+            </div>
+
+          </fieldset>
+
+          <!-- Botones -->
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+
+            <button type="submit">
+              Enviar solicitud
+            </button>
+
+            <button type="reset">
+              Limpiar
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+      <!-- Actividad -->
+      <section aria-labelledby="actividad-soporte">
+
+        <div class="section-header">
+
+          <h2 id="actividad-soporte">
+            Estado del soporte
+          </h2>
+
+        </div>
+
+        <div class="activity-panel">
+
+          <article class="activity-item">
+
+            <h3>
+              Plataforma estable
+            </h3>
+
+            <p>
+              El sistema opera correctamente sin incidentes críticos.
+            </p>
+
+          </article>
+
+          <article class="activity-item">
+
+            <h3>
+              Última actualización
+            </h3>
+
+            <p>
+              Se implementaron mejoras de seguridad y rendimiento.
+            </p>
+
+          </article>
+
+          <article class="activity-item">
+
+            <h3>
+              Soporte disponible
+            </h3>
+
+            <p>
+              Atención institucional disponible en horario administrativo.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
 
 </body>
+
 </html>
